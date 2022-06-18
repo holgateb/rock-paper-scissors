@@ -1,24 +1,38 @@
 var characterChoice = prompt("What is your choice? R, P,or S?");
-
-var choices = ["R", "P", "S"]
-
 var computerChoice = ["R", "P", "S"]
+var wins = 0
+var losses = 0
+var ties = 0
+var isPlayingGame = true
 
-// console.log(characterChoice);
+characterChoice = characterChoice.toUpperCase();
 
-computerChoice = (Math.floor(Math.random(computerChoice) * 3));
+console.log(characterChoice);
+
+computerChoice = computerChoice[Math.floor(Math.random(computerChoice) * 3)];
+
 
 function playRound(choices, computerChoice) {
+    
+    if(choices !== "R"|| choices !== "P"|| choices !== "S" ) {
+        alert("Please make a valid choice.");
+      return null;
+    }
     if (choices == computerChoice) {
-        alert('TIE GAME!!');
-    } else if (choices == 'Rock' && computerChoice == 'Scissors') {
-        alert('player wins!');
-    } else if (choices == 'Scissors' && computerChoice == 'Paper') {
-        alert('player wins!');
-    } else if (choices == 'Paper' && computerChoice == 'Rock') {
-        alert('player wins!');
+        ties++
+        alert('Eww... Tie');
+    } else if (choices == 'R' && computerChoice == 'S') {
+        wins++
+        alert('Player Wins!');
+    } else if (choices == 'S' && computerChoice == 'P') {
+        wins++
+        alert('Player Wins!');
+    } else if (choices == 'P' && computerChoice == 'R') {
+        wins++
+        alert('Player Wins!');
     } else {
-      alert('You Lose!');
+        losses++
+      alert('Loser!');
     }
   }
   
